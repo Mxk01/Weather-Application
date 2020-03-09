@@ -29,14 +29,14 @@ let location = search.value;
 messageTwo.textContent ='';
 messageTwo.textContent = 'Loading...';
 // 'http://localhost:3000/weather?address='+location
-   fetch(`http://localhost:3000/weather?address=${location}`).then((response)=>{ response.json().then((result)=>
+   fetch(`/weather?address=${location}`).then((response)=>{ response.json().then((result)=>
    {
-    
+
    if(result.error) { messageTwo.textContent=result.error; }
    else{
       messageOne.textContent=result.location;
       messageTwo.textContent=result.data;
    }
 })
-}); 
+});
 });

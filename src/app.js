@@ -1,5 +1,6 @@
 let express = require('express');
 const app = express();
+let port = process.env.PORT||3000;
 const path = require('path');
 let hbs = require('hbs');
 let request = require('request');
@@ -20,11 +21,11 @@ app.use(express.static(publicDirectoryPath)); // Setting static files path
 hbs.registerPartials(partialsPath); // Setting hbs paths
 
 
-app.get('/weather',(req,res)=>{ 
+app.get('/weather',(req,res)=>{
    let address = req.query.address;
    if(!address)   return  res.send({error:'Please provide a valid term'});
-      
-   geocode(address,(error,{latitude,longitude,location}={})=>{ // providing a default  object in case we don't get latitude,longitude,location 
+
+   geocode(address,(error,{latitude,longitude,location}={})=>{ // providing a default  object in case we don't get latitude,longitude,location
       if(error) return res.send({error});
       forecast(latitude,longitude,(error,forecastData)=>{
          if(error) return res.send({error});
@@ -34,13 +35,13 @@ app.get('/weather',(req,res)=>{
              data:forecastData,
              location,
              address
-          }) 
+          })
           })
    })
-   
+
  })
 
- app.get('/about',(req,res)=>{ 
+ app.get('/about',(req,res)=>{
    res.render('about',
    {
       name:'Robert',
@@ -71,20 +72,20 @@ app.get('/help/*',(req,res) => {res.render('404page',{
  );
 
 
- app.get('/products',(req,res)=>{ 
+ app.get('/products',(req,res)=>{
    if(!req.query.search){ // if no search term was found;  !{ search : 'value' }   -> false
     return res.send({error:'You must provide a search term'})
    }
-  
+
       res.send({products:[]});
 
-   
+
  });
 
 app.get('*',(req,res)=>
 {
 res.render('404page',{
-   
+
    title:'404',
    name:'Robert M.',
    error:'404 page not found'})
@@ -95,4 +96,4 @@ res.render('404page',{
 
 
 
- app.listen(3000,()=>{ console.log('Server is running ... ')}); // Listening to incoming requests on port 3000;
+ app.listen(port,()=>{ console.log('Server is running ... ')}); // Listening to incoming requests on port 3000;
