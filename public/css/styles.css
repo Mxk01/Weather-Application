@@ -8,7 +8,7 @@ body{
 
 .portrait{
     width:250px;
-   
+
 }
 footer{
     color: #888888;
@@ -34,4 +34,8 @@ button{
     padding:1rem;
     background:tomato;
     color:white;
+}
+
+.err404{
+  width:350px;
 }
