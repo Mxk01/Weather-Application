@@ -1,0 +1,37 @@
+body{
+    color: #333333;
+    font-family:Arial;
+    max-width:600px;
+    margin:0 auto;
+    padding:15px;
+}
+
+.portrait{
+    width:250px;
+   
+}
+footer{
+    color: #888888;
+    border-top:1px solid #eeeeee;
+    margin-top:16px;
+    padding:16px;
+}
+
+a {
+    text-decoration:none ;
+    margin:5px;
+    color:#888888;
+}
+#main-title{
+    font-size:3rem;
+}
+
+input{
+    padding:1rem;
+}
+button{
+    border:0;
+    padding:1rem;
+    background:tomato;
+    color:white;
+}
